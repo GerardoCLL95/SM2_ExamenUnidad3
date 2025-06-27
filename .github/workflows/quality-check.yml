@@ -1,0 +1,36 @@
+# .github/workflows/quality_check.yml
+name: Quality Check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          # Asegúrate de que esta versión de Flutter coincida con la que usas localmente
+          # y que sea compatible con las dependencias de tu pubspec.yaml.
+          flutter-version: '3.19.0' 
+
+      - name: Install dependencies
+        # IMPORTANTE: Este paso fallará en GitHub Actions si tu pubspec.yaml tiene conflictos de dependencias,
+        # como el que tuviste con 'intl'. Asegúrate de que 'flutter pub get'
+        # se ejecuta correctamente en tu máquina local ANTES de subir los cambios.
+        run: flutter pub get
+
+      - name: Analyze
+        run: flutter analyze
+
+      - name: Run tests
+        # Este paso también fallará si 'flutter pub get' no pudo resolver las dependencias
+        # o si hay errores en tus pruebas.
+        run: flutter test
