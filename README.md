@@ -10,8 +10,7 @@
 
 ## URL del Repositorio
 
-[Enlace a tu repositorio SM2_ExamenUnidad3 en GitHub](TU_URL_DEL_REPOSITORIO_AQUI)
-
+https://github.com/GerardoCLL95/SM2_ExamenUnidad3?tab=readme-ov-file
 ---
 
 ## Evidencia de Configuración y Ejecución del Workflow
