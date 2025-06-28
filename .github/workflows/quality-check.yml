@@ -17,12 +17,8 @@ jobs:
       - name: Set up Flutter # Configura el entorno de Flutter
         uses: subosito/flutter-action@v2
         with:
-          # Tu pubspec.yaml requiere 'sdk: ^3.7.2' para Dart SDK.
-          # Flutter 3.22.0 (la última versión estable) viene con Dart 3.10.x,
-          # lo cual satisface ese requisito.
-          # Si sigues viendo Dart 3.4.0 en el paso "Verify Dart SDK Version",
-          # es un problema de la acción 'subosito/flutter-action' o de caché del runner.
-          flutter-version: '3.7.2' # ¡Esta es la versión correcta de FLUTTER para tu Dart SDK!
+       
+          flutter-version: '3.22.0' 
          
 
       - name: Verify Dart SDK Version # ¡CRUCIAL PARA DEPURAR!
