@@ -105,7 +105,7 @@ class _EmployeeManagementScreenState extends State<EmployeeManagementScreen> {
                       onPressed: () => toggleEmployeeStatus(employee),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: statusColor,
-                        padding: EdgeInsets.symmetric(
+                        padding: const EdgeInsets.symmetric(
                           vertical: 14,
                           horizontal: 20,
                         ),
