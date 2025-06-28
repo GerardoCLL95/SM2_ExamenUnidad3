@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "asistenciacontrol" "\0"
+            VALUE "FileDescription", "controlasistencia" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "asistenciacontrol" "\0"
+            VALUE "InternalName", "controlasistencia" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2025 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "asistenciacontrol.exe" "\0"
-            VALUE "ProductName", "asistenciacontrol" "\0"
+            VALUE "OriginalFilename", "controlasistencia.exe" "\0"
+            VALUE "ProductName", "controlasistencia" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

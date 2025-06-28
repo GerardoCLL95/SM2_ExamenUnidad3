@@ -1,6 +1,6 @@
 {
-    "name": "asistenciacontrol",
-    "short_name": "asistenciacontrol",
+    "name": "controlasistencia",
+    "short_name": "controlasistencia",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
