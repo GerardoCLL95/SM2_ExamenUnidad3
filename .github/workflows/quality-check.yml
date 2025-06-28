@@ -1,4 +1,3 @@
-# .github/workflows/quality_check.yml
 name: Quality Check
 
 on:
@@ -9,32 +8,21 @@ on:
 
 jobs:
   analyze:
-    runs-on: ubuntu-latest # O 'macos-latest' si desarrollas para iOS también
+    runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3 # Paso para clonar tu repositorio
+      - uses: actions/checkout@v3
 
-      - name: Set up Flutter # Configura el entorno de Flutter
+      - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-       
           flutter-version: '3.32.5' 
-         
 
-      - name: Verify Dart SDK Version # ¡CRUCIAL PARA DEPURAR!
-        run: dart --version # Este paso te dirá qué versión de Dart SDK está activa en el runner.
-
-      - name: Install dependencies # Ejecuta 'flutter pub get'
-        # Este paso intentará resolver las dependencias de tu pubspec.yaml.
-        # Si el paso "Verify Dart SDK Version" muestra un Dart SDK compatible (>=3.7.2),
-        # y aún hay errores aquí, revisa las dependencias en tu pubspec.yaml.
-        # En tu pubspec actual, 'intl: ^0.19.0' podría ser una fuente de conflicto
-        # si 'flutter_localizations' (dependencia de Flutter) necesita una versión más nueva de 'intl'.
-        # Es ideal que 'flutter pub get' funcione correctamente en tu máquina local primero.
+      - name: Install dependencies
         run: flutter pub get
 
-      - name: Analyze # Ejecuta el analizador de código Flutter
+      - name: Analyze
         run: flutter analyze
 
-      - name: Run tests # Ejecuta tus pruebas unitarias
+      - name: Run tests
         run: flutter test

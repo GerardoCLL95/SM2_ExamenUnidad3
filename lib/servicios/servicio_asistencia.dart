@@ -1,0 +1,3 @@
+class ServicioAsistencia {
+  obtenerHistorialAsistencia(id) {}
+}
