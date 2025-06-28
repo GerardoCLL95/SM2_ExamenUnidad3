@@ -9,7 +9,7 @@ on:
 
 jobs:
   analyze:
-    runs-on: ubuntu-latest # Puedes cambiar a 'macos-latest' si lo necesitas para builds de iOS
+    runs-on: ubuntu-latest # O 'macos-latest' si desarrollas para iOS también
 
     steps:
       - uses: actions/checkout@v3 # Paso para clonar tu repositorio
@@ -17,22 +17,24 @@ jobs:
       - name: Set up Flutter # Configura el entorno de Flutter
         uses: subosito/flutter-action@v2
         with:
-          # Tu proyecto 'asistenciacontrol' requiere Dart SDK ^3.7.2.
-          # Flutter 3.22.0 (la última versión estable conocida) viene con Dart 3.10.x,
-          # lo cual DEBERÍA satisfacer ese requisito.
-          # Si aún ves Dart 3.4.0 en el paso 'Verify Dart SDK Version',
-          # es probable que haya un problema con la acción o la caché del runner.
-          flutter-version: '3.22.0' # Versión de Flutter para instalar
+          # Tu pubspec.yaml requiere 'sdk: ^3.7.2' para Dart SDK.
+          # Flutter 3.22.0 (la última versión estable) viene con Dart 3.10.x,
+          # lo cual satisface ese requisito.
+          # Si sigues viendo Dart 3.4.0 en el paso "Verify Dart SDK Version",
+          # es un problema de la acción 'subosito/flutter-action' o de caché del runner.
+          flutter-version: '3.22.0' # ¡Esta es la versión correcta de FLUTTER para tu Dart SDK!
           channel: 'stable'       # Asegura que se use la rama estable
 
-      - name: Verify Dart SDK Version # ESTE ES EL PASO CLAVE DE DEPURACIÓN
-        run: dart --version # Muestra qué versión de Dart SDK está activa en el runner
+      - name: Verify Dart SDK Version # ¡CRUCIAL PARA DEPURAR!
+        run: dart --version # Este paso te dirá qué versión de Dart SDK está activa en el runner.
 
       - name: Install dependencies # Ejecuta 'flutter pub get'
         # Este paso intentará resolver las dependencias de tu pubspec.yaml.
-        # Si 'Verify Dart SDK Version' muestra un Dart SDK compatible (>=3.7.2),
-        # y sigues teniendo errores aquí, revisa nuevamente los conflictos de paquetes en tu pubspec.yaml
-        # (como el anterior de 'intl').
+        # Si el paso "Verify Dart SDK Version" muestra un Dart SDK compatible (>=3.7.2),
+        # y aún hay errores aquí, revisa las dependencias en tu pubspec.yaml.
+        # En tu pubspec actual, 'intl: ^0.19.0' podría ser una fuente de conflicto
+        # si 'flutter_localizations' (dependencia de Flutter) necesita una versión más nueva de 'intl'.
+        # Es ideal que 'flutter pub get' funcione correctamente en tu máquina local primero.
         run: flutter pub get
 
       - name: Analyze # Ejecuta el analizador de código Flutter
