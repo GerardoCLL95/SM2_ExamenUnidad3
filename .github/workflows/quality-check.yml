@@ -22,8 +22,8 @@ jobs:
           # lo cual satisface ese requisito.
           # Si sigues viendo Dart 3.4.0 en el paso "Verify Dart SDK Version",
           # es un problema de la acción 'subosito/flutter-action' o de caché del runner.
-          flutter-version: '3.22.0' # ¡Esta es la versión correcta de FLUTTER para tu Dart SDK!
-          channel: 'stable'       # Asegura que se use la rama estable
+          flutter-version: '3.7.2' # ¡Esta es la versión correcta de FLUTTER para tu Dart SDK!
+         
 
       - name: Verify Dart SDK Version # ¡CRUCIAL PARA DEPURAR!
         run: dart --version # Este paso te dirá qué versión de Dart SDK está activa en el runner.
